@@ -83,10 +83,16 @@ public class Main {
         System.out.print("Please enter your name: ");
         var nameOfUser = input.next();
 
-        var bookNames = LibraryManagementSystem.getAvailableBooks().stream().map(Book::getTitle).toArray();
+        var bookNames = LibraryManagementSystem.getAvailableBooks().stream().map(Book::getAdvertisementTitle).toArray();
         System.out.println("Available Books");
-        System.out.println(Arrays.deepToString(bookNames));
 
+        if(bookNames.length == 0){
+            System.out.println("No books available for you to rent.");
+            appCycle();
+            return;
+        }
+
+        System.out.println(Arrays.deepToString(bookNames));
         System.out.print("Please enter the title of the book you want to rent: ");
         var bookTitle = input.next();
 
@@ -118,19 +124,19 @@ public class Main {
         System.out.print("These are the books you've rented from this library before, write the title of the book you want to give us back: ");
         var bookTitle = input.next();
 
-        if (LibraryManagementSystem.giveBack(bookTitle)) {
-            System.out.println(String.format("You've successfully rented the book: %s", bookTitle));
-        }
-
-        else {
+        if (!LibraryManagementSystem.giveBack(bookTitle)) {
             error();
             return;
         }
+
+        appCycle();
     }
 
     private static void serializeAllBooks() {
         System.out.println("Available Books");
         System.out.println(Arrays.deepToString(LibraryManagementSystem.getAvailableBooks().toArray()));
+
+        System.out.println();
 
         System.out.println("Rented Books");
         System.out.println(Arrays.deepToString(LibraryManagementSystem.getRentedBooks().toArray()));

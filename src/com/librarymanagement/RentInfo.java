@@ -20,6 +20,6 @@ public class RentInfo {
 
     @Override
     public String toString() {
-        return String.format("Title: %s, Rented By: %s\n", this.getBookInfo().getTitle(), this.getOwnerName());
+        return String.format("Title: %s, Rented By: %s\n", this.getBookInfo().getAdvertisementTitle(), this.getOwnerName());
     }
 }

@@ -7,8 +7,16 @@ public class Book {
     private String description;
     private int pages;
 
+    public String getAuthor() {
+        return author;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public String getAdvertisementTitle() {
+        return String.format("%s by %s", this.title, this.author);
     }
 
     public Book() {
@@ -25,7 +33,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("Title: %s (%s pages)\n Author: %s\n Type: %s\n Description: %s\n",
+        return String.format("Title: %s (%s pages), Author: %s, Type: %s, Description: %s\n",
                 this.title, this.pages, this.author, this.type.toString(), this.description);
     }
 }
