@@ -26,18 +26,16 @@ public class MainLibrary {
 
         // Calculate action based on the input from the user.
         switch (eventType) {
-            case 1 -> donate();
-            case 2 -> giveBack();
-            case 3 -> rent();
+            case 1 -> donate(input);
+            case 2 -> giveBack(input);
+            case 3 -> rent(input);
             case 4 -> serializeAllBooks();
             default -> error();
         }
     }
 
     // Donation action
-    private static void donate() {
-        Scanner input = new Scanner(System.in);
-
+    private static void donate(Scanner input) {
         System.out.println("Please enter information of the book you're going to donate.");
         System.out.println();
 
@@ -51,6 +49,14 @@ public class MainLibrary {
         var author = input.next();
         System.out.println();
 
+        // Get BookType Input.
+        int i = 0;
+        for (BookType val : BookType.values()) {
+            System.out.printf("%d : %s%n", i++, val.toString());
+        }
+        System.out.print("Select a book type from above that fits with your book and enter the number of it: ");
+        var type = BookType.values()[input.nextInt()];
+
         // Get Description Input.
         System.out.print("Description: ");
         var description = input.next();
@@ -62,7 +68,7 @@ public class MainLibrary {
         System.out.println();
 
         // Try donating the book to the library.
-        if(!LibraryManagementSystem.donate(new Book(title, author, BookType.Unknown, description, pages))) {
+        if(!LibraryManagementSystem.donate(new Book(title, author, type, description, pages))) {
             error();
             return;
         }
@@ -72,9 +78,7 @@ public class MainLibrary {
     }
 
     // Renting action
-    private static void rent() {
-        Scanner input = new Scanner(System.in);
-
+    private static void rent(Scanner input) {
         //Get User Name Input.
         System.out.print("Please enter your name: ");
         var nameOfUser = input.next();
@@ -96,7 +100,7 @@ public class MainLibrary {
         var bookTitle = input.next();
 
         // Try renting the book.
-        if (!LibraryManagementSystem.rent(nameOfUser, bookTitle)) {
+        if (!LibraryManagementSystem.rent(input, nameOfUser, bookTitle)) {
             error();
             return;
         }
@@ -105,9 +109,7 @@ public class MainLibrary {
     }
 
     // Giving back action
-    private static void giveBack() {
-        Scanner input = new Scanner(System.in);
-
+    private static void giveBack(Scanner input) {
         // Get User Name Input.
         System.out.print("Please enter your name: ");
         var nameOfUser = input.next();
@@ -140,7 +142,6 @@ public class MainLibrary {
 
     // Serializes and prints all books rented or available.
     private static void serializeAllBooks() {
-
         // Find and display all available books in the library.
         System.out.println("Available Books");
         System.out.println(Arrays.deepToString(LibraryManagementSystem.getAvailableBooks().toArray()));

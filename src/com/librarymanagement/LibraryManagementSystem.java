@@ -29,7 +29,7 @@ public class LibraryManagementSystem {
     }
 
     // Renting Process
-    public static boolean rent(String nameOfUser, String bookTitle) {
+    public static boolean rent(Scanner input, String nameOfUser, String bookTitle) {
 
         // Check if the input is invalid.
         if(bookTitle.trim().isBlank() || nameOfUser.trim().isBlank()) {
@@ -45,7 +45,6 @@ public class LibraryManagementSystem {
         if(all.size() > 1) {
             // Get Author Name Input
             System.out.print("There are several books with this name, please enter author name of your book: ");
-            Scanner input = new Scanner(System.in);
             var author = input.nextLine().trim(); // TRIM!!!
 
             // Filter the books by the author name and pick the correct one using the author input.
