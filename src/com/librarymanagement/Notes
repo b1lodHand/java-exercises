@@ -1,5 +1,6 @@
 12/12/2022 8.14 PM
 # Add book type selection by input functionality.
 # Make the last tweaks and end the project.
-#!!! Multiple books with the same name and author!!!
 # Input type debugging
+# Better find out wtf is wrong with input.nextLine()
+# Refactor advertisement name thingy of the book class.

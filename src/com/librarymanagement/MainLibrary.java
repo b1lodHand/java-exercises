@@ -41,12 +41,13 @@ public class MainLibrary {
 
         // Get Title Input.
         System.out.print("Title: ");
-        var title = input.next();
+        input.nextLine(); // WTF ???
+        var title = input.nextLine();
         System.out.println();
 
         // Get Author Input.
         System.out.print("Author: ");
-        var author = input.next();
+        var author = input.nextLine();
         System.out.println();
 
         // Get BookType Input.
@@ -59,7 +60,8 @@ public class MainLibrary {
 
         // Get Description Input.
         System.out.print("Description: ");
-        var description = input.next();
+        input.nextLine(); // WTF ???
+        var description = input.nextLine();
         System.out.println();
 
         // Get Page Count Input.
