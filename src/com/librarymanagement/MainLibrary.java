@@ -86,7 +86,7 @@ public class MainLibrary {
         var nameOfUser = input.next();
 
         //Get all books available at the library.
-        var bookNames = LibraryManagementSystem.getAvailableBooks().stream().map(Book::getAdvertisementTitle).toArray();
+        var bookNames = LibraryManagementSystem.getAvailableBooks().stream().map(Book::toString).toArray();
         System.out.println("Available Books");
 
         // Check if there's no books available.

@@ -33,7 +33,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("Title: %s (%s pages), Author: %s, Type: %s, Description: %s\n",
-                this.title, this.pages, this.author, this.type.toString(), this.description);
+        return String.format("%s by %s (%s pages), %s, %s\n",
+                this.title, this.author, this.pages, this.type.toString(), this.description);
     }
 }

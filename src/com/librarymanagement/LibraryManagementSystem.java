@@ -61,7 +61,7 @@ public class LibraryManagementSystem {
         availableBooks.remove(found.get());
         rentedBooks.add(new RentInfo(nameOfUser, found.get()));
 
-        System.out.printf("You've rented the book: %s%n\n", found.get().getAdvertisementTitle());
+        System.out.printf("You've rented the book: %s%n\n", found.get().toString());
         return true;
     }
 
@@ -73,7 +73,7 @@ public class LibraryManagementSystem {
         // Add target book to the available books list.
         availableBooks.add(book);
 
-        System.out.printf("Thanks for donating the book: %s%n\n", book.getAdvertisementTitle());
+        System.out.printf("Thanks for donating the book: %s%n\n", book.toString());
 
         return true;
     }
@@ -90,7 +90,7 @@ public class LibraryManagementSystem {
         rentedBooks.remove(book.get());
         availableBooks.add(book.get().getBookInfo());
 
-        System.out.printf("Thanks for giving back the book: %s\n%n", book.get().getBookInfo().getAdvertisementTitle());
+        System.out.printf("Thanks for giving back the book: %s\n%n", book.get().getBookInfo().toString());
         return true;
     }
 }
